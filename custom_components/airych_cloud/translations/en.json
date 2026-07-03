@@ -1,0 +1,216 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Airych Cloud",
+        "description": "Connect your Airych account. The server address is pre-filled; change it only if instructed.",
+        "data": {
+          "backend_url": "Server address"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Airych Cloud",
+        "description": "Your session for {account_name} has expired. Pair again to restore the connection."
+      },
+      "select_hubs": {
+        "title": "Choose VioStations",
+        "description": "Select which VioStations should be imported into Home Assistant. Found {viostation_count} VioStation(s).",
+        "data": {
+          "selected_hub_ids": "VioStations"
+        }
+      },
+      "select_cameras": {
+        "title": "Choose VioCams",
+        "description": "Select which VioCams should be imported from the selected VioStations. Found {camera_count} VioCam(s) under {viostation_count} VioStation(s).",
+        "data": {
+          "back_to_hubs": "Back to VioStation selection",
+          "selected_camera_ids": "VioCams"
+        }
+      }
+    },
+    "progress": {
+      "pairing": "Scan this QR code in the Airych app to finish pairing:\n\n![QR code]({qr_code})\n\nPairing code: **{user_code}**"
+    },
+    "abort": {
+      "already_configured": "This account is already configured",
+      "pair_expired": "Pairing timed out. Please try again.",
+      "pair_denied": "Pairing was denied in the app.",
+      "cannot_connect": "Failed to connect to the Airych server.",
+      "no_devices": "No Airych VioStations were found for this account.",
+      "reauth_successful": "Re-authentication was successful",
+      "reauth_account_mismatch": "Please sign in with the same account that was originally configured."
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Airych server.",
+      "no_hubs_selected": "Select at least one VioStation.",
+      "invalid_device_selection": "Selected VioCams must belong to selected VioStations.",
+      "unknown": "Unexpected error"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Configure Airych Cloud",
+        "menu_options": {
+          "reselect_devices": "Reselect devices",
+          "snapshot_settings": "Snapshot settings"
+        }
+      },
+      "snapshot_settings": {
+        "title": "Snapshot settings",
+        "description": "Control how often automatic camera preview refreshes request a fresh hub snapshot. Manual download snapshots always request a fresh image. Set to 0 to disable throttling.",
+        "data": {
+          "snapshot_preview_interval": "Preview refresh interval (seconds)"
+        }
+      },
+      "select_hubs": {
+        "title": "Choose VioStations",
+        "description": "Select which VioStations should be imported into Home Assistant. Found {viostation_count} VioStation(s).",
+        "data": {
+          "selected_hub_ids": "VioStations"
+        }
+      },
+      "select_cameras": {
+        "title": "Choose VioCams",
+        "description": "Select which VioCams should be imported from the selected VioStations. Found {camera_count} VioCam(s) under {viostation_count} VioStation(s).",
+        "data": {
+          "back_to_hubs": "Back to VioStation selection",
+          "selected_camera_ids": "VioCams"
+        }
+      }
+    },
+    "abort": {
+      "cannot_connect": "Failed to connect to the Airych server.",
+      "no_devices": "No Airych VioStations were found for this account."
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the Airych server.",
+      "no_hubs_selected": "Select at least one VioStation.",
+      "invalid_device_selection": "Selected VioCams must belong to selected VioStations.",
+      "unknown": "Unexpected error"
+    }
+  },
+  "services": {
+    "play_hub_alarm": {
+      "name": "Play VioStation alarm",
+      "description": "Ask a VioStation to play an alarm sound. Backend/RPC wiring is reserved.",
+      "fields": {
+        "device_id": {
+          "name": "VioStation device",
+          "description": "Target VioStation device(s)."
+        },
+        "duration": {
+          "name": "Duration",
+          "description": "Alarm duration in seconds."
+        },
+        "volume": {
+          "name": "Volume",
+          "description": "Alarm volume from 0 to 100."
+        },
+        "tone": {
+          "name": "Tone",
+          "description": "Alarm tone name."
+        }
+      }
+    },
+    "play_camera_alarm": {
+      "name": "Play VioCam alarm",
+      "description": "Ask a VioCam to play an alarm sound. Backend/RPC wiring is reserved.",
+      "fields": {
+        "device_id": {
+          "name": "VioCam device",
+          "description": "Target VioCam device(s)."
+        },
+        "duration": {
+          "name": "Duration",
+          "description": "Alarm duration in seconds."
+        },
+        "volume": {
+          "name": "Volume",
+          "description": "Alarm volume from 0 to 100."
+        },
+        "tone": {
+          "name": "Tone",
+          "description": "Alarm tone name."
+        }
+      }
+    },
+    "start_camera_recording": {
+      "name": "Start VioCam recording",
+      "description": "Ask a VioCam to start recording. Backend/RPC wiring is reserved.",
+      "fields": {
+        "device_id": {
+          "name": "VioCam device",
+          "description": "Target VioCam device(s)."
+        },
+        "duration": {
+          "name": "Duration",
+          "description": "Recording duration in seconds."
+        },
+        "reason": {
+          "name": "Reason",
+          "description": "Optional reason for App/cloud display or logging."
+        }
+      }
+    },
+    "stop_camera_recording": {
+      "name": "Stop VioCam recording",
+      "description": "Ask a VioCam to stop recording. Backend/RPC wiring is reserved.",
+      "fields": {
+        "device_id": {
+          "name": "VioCam device",
+          "description": "Target VioCam device(s)."
+        }
+      }
+    },
+    "capture_camera_snapshot": {
+      "name": "Capture VioCam snapshot",
+      "description": "Request a fresh Airych cloud snapshot for a VioCam.",
+      "fields": {
+        "device_id": {
+          "name": "VioCam device",
+          "description": "Target VioCam device(s)."
+        },
+        "resolution": {
+          "name": "Resolution",
+          "description": "Snapshot resolution."
+        },
+        "with_osd": {
+          "name": "Include OSD",
+          "description": "Include on-screen display if supported by the backend."
+        }
+      }
+    },
+    "send_mobile_notification": {
+      "name": "Send Airych mobile notification",
+      "description": "Send a notification to the Airych mobile app. Backend wiring is reserved.",
+      "fields": {
+        "title": {
+          "name": "Title",
+          "description": "Notification title."
+        },
+        "message": {
+          "name": "Message",
+          "description": "Notification body."
+        },
+        "level": {
+          "name": "Level",
+          "description": "Notification severity."
+        },
+        "camera": {
+          "name": "Camera",
+          "description": "Optional VioCam context for the notification."
+        },
+        "include_snapshot": {
+          "name": "Include snapshot",
+          "description": "Include a camera snapshot if supported by the backend."
+        }
+      }
+    }
+  },
+  "device_automation": {
+    "action_type": {
+      "snapshot": "Take snapshot"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+play_hub_alarm:
+  name: Play VioStation alarm
+  description: Ask a VioStation to play an alarm sound. Backend/RPC wiring is reserved.
+  fields:
+    device_id:
+      name: VioStation device
+      description: Target VioStation device(s).
+      required: true
+      selector:
+        device:
+          integration: airych_cloud
+          multiple: true
+    duration:
+      name: Duration
+      description: Alarm duration in seconds.
+      selector:
+        number:
+          min: 1
+          max: 86400
+          mode: box
+          unit_of_measurement: s
+    volume:
+      name: Volume
+      description: Alarm volume from 0 to 100.
+      selector:
+        number:
+          min: 0
+          max: 100
+          mode: slider
+    tone:
+      name: Tone
+      description: Alarm tone name.
+      example: alarm
+      selector:
+        text:
+
+play_camera_alarm:
+  name: Play VioCam alarm
+  description: Ask a VioCam to play an alarm sound. Backend/RPC wiring is reserved.
+  fields:
+    device_id:
+      name: VioCam device
+      description: Target VioCam device(s).
+      required: true
+      selector:
+        device:
+          integration: airych_cloud
+          multiple: true
+    duration:
+      name: Duration
+      description: Alarm duration in seconds.
+      selector:
+        number:
+          min: 1
+          max: 86400
+          mode: box
+          unit_of_measurement: s
+    volume:
+      name: Volume
+      description: Alarm volume from 0 to 100.
+      selector:
+        number:
+          min: 0
+          max: 100
+          mode: slider
+    tone:
+      name: Tone
+      description: Alarm tone name.
+      example: alarm
+      selector:
+        text:
+
+start_camera_recording:
+  name: Start VioCam recording
+  description: Ask a VioCam to start recording. Backend/RPC wiring is reserved.
+  fields:
+    device_id:
+      name: VioCam device
+      description: Target VioCam device(s).
+      required: true
+      selector:
+        device:
+          integration: airych_cloud
+          multiple: true
+    duration:
+      name: Duration
+      description: Recording duration in seconds.
+      selector:
+        number:
+          min: 1
+          max: 86400
+          mode: box
+          unit_of_measurement: s
+    reason:
+      name: Reason
+      description: Optional reason for App/cloud display or logging.
+      example: person
+      selector:
+        text:
+
+stop_camera_recording:
+  name: Stop VioCam recording
+  description: Ask a VioCam to stop recording. Backend/RPC wiring is reserved.
+  fields:
+    device_id:
+      name: VioCam device
+      description: Target VioCam device(s).
+      required: true
+      selector:
+        device:
+          integration: airych_cloud
+          multiple: true
+
+capture_camera_snapshot:
+  name: Capture VioCam snapshot
+  description: Request a fresh Airych cloud snapshot for a VioCam.
+  fields:
+    device_id:
+      name: VioCam device
+      description: Target VioCam device(s).
+      required: true
+      selector:
+        device:
+          integration: airych_cloud
+          multiple: true
+    resolution:
+      name: Resolution
+      description: Snapshot resolution.
+      default: low
+      selector:
+        select:
+          options:
+            - low
+            - high
+    with_osd:
+      name: Include OSD
+      description: Include on-screen display if supported by the backend.
+      default: false
+      selector:
+        boolean:
+
+send_mobile_notification:
+  name: Send Airych mobile notification
+  description: Send a notification to the Airych mobile app. Backend wiring is reserved.
+  fields:
+    title:
+      name: Title
+      description: Notification title.
+      example: Detected person
+      selector:
+        text:
+    message:
+      name: Message
+      description: Notification body.
+      required: true
+      example: Garage VioCam detected a person.
+      selector:
+        text:
+    level:
+      name: Level
+      description: Notification severity.
+      default: info
+      selector:
+        select:
+          options:
+            - info
+            - warning
+            - critical
+    camera:
+      name: Camera
+      description: Optional VioCam context for the notification.
+      selector:
+        entity:
+          integration: airych_cloud
+          domain: camera
+    include_snapshot:
+      name: Include snapshot
+      description: Include a camera snapshot if supported by the backend.
+      default: false
+      selector:
+        boolean:

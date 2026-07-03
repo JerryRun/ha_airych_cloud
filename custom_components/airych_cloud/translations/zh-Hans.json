@@ -1,0 +1,216 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Airych 云",
+        "description": "连接你的 Airych 账号。服务器地址已预填，如无特别说明请勿修改。",
+        "data": {
+          "backend_url": "服务器地址"
+        }
+      },
+      "reauth_confirm": {
+        "title": "重新认证 Airych 云",
+        "description": "账号 {account_name} 的会话已过期，请重新扫码配对以恢复连接。"
+      },
+      "select_hubs": {
+        "title": "选择智能网关",
+        "description": "选择要导入 Home Assistant 的智能网关。已发现 {viostation_count} 个智能网关。",
+        "data": {
+          "selected_hub_ids": "智能网关"
+        }
+      },
+      "select_cameras": {
+        "title": "选择摄像头",
+        "description": "选择要从已选智能网关导入的摄像头。已在 {viostation_count} 个智能网关下发现 {camera_count} 个摄像头。",
+        "data": {
+          "back_to_hubs": "返回重选智能网关",
+          "selected_camera_ids": "摄像头"
+        }
+      }
+    },
+    "progress": {
+      "pairing": "用 Airych App 扫描二维码完成绑定：\n\n![二维码]({qr_code})\n\n配对码：**{user_code}**"
+    },
+    "abort": {
+      "already_configured": "该账号已配置",
+      "pair_expired": "配对超时，请重试。",
+      "pair_denied": "App 中拒绝了本次配对。",
+      "cannot_connect": "无法连接到 Airych 服务器。",
+      "no_devices": "该账号下没有发现 Airych 智能网关。",
+      "reauth_successful": "重新认证成功",
+      "reauth_account_mismatch": "请使用最初配置的同一账号登录。"
+    },
+    "error": {
+      "cannot_connect": "无法连接到 Airych 服务器。",
+      "no_hubs_selected": "至少选择一个智能网关。",
+      "invalid_device_selection": "选择的摄像头必须属于已选择的智能网关。",
+      "unknown": "未知错误"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "配置 Airych 云",
+        "menu_options": {
+          "reselect_devices": "重新选择设备",
+          "snapshot_settings": "快照设置"
+        }
+      },
+      "snapshot_settings": {
+        "title": "快照设置",
+        "description": "控制摄像头预览自动刷新时，多久才向智能网关请求一次新快照。手动下载快照始终请求新图片。设置为 0 表示不限制。",
+        "data": {
+          "snapshot_preview_interval": "预览刷新间隔（秒）"
+        }
+      },
+      "select_hubs": {
+        "title": "选择智能网关",
+        "description": "选择要导入 Home Assistant 的智能网关。已发现 {viostation_count} 个智能网关。",
+        "data": {
+          "selected_hub_ids": "智能网关"
+        }
+      },
+      "select_cameras": {
+        "title": "选择摄像头",
+        "description": "选择要从已选智能网关导入的摄像头。已在 {viostation_count} 个智能网关下发现 {camera_count} 个摄像头。",
+        "data": {
+          "back_to_hubs": "返回重选智能网关",
+          "selected_camera_ids": "摄像头"
+        }
+      }
+    },
+    "abort": {
+      "cannot_connect": "无法连接到 Airych 服务器。",
+      "no_devices": "该账号下没有发现 Airych 智能网关。"
+    },
+    "error": {
+      "cannot_connect": "无法连接到 Airych 服务器。",
+      "no_hubs_selected": "至少选择一个智能网关。",
+      "invalid_device_selection": "选择的摄像头必须属于已选择的智能网关。",
+      "unknown": "未知错误"
+    }
+  },
+  "services": {
+    "play_hub_alarm": {
+      "name": "智能网关播放告警音",
+      "description": "让智能网关播放告警音。后端/RPC 实现预留。",
+      "fields": {
+        "device_id": {
+          "name": "智能网关设备",
+          "description": "目标智能网关设备。"
+        },
+        "duration": {
+          "name": "持续时间",
+          "description": "告警音持续时间，单位秒。"
+        },
+        "volume": {
+          "name": "音量",
+          "description": "告警音音量，范围 0 到 100。"
+        },
+        "tone": {
+          "name": "音色",
+          "description": "告警音名称。"
+        }
+      }
+    },
+    "play_camera_alarm": {
+      "name": "摄像头播放告警音",
+      "description": "让摄像头播放告警音。后端/RPC 实现预留。",
+      "fields": {
+        "device_id": {
+          "name": "摄像头设备",
+          "description": "目标摄像头设备。"
+        },
+        "duration": {
+          "name": "持续时间",
+          "description": "告警音持续时间，单位秒。"
+        },
+        "volume": {
+          "name": "音量",
+          "description": "告警音音量，范围 0 到 100。"
+        },
+        "tone": {
+          "name": "音色",
+          "description": "告警音名称。"
+        }
+      }
+    },
+    "start_camera_recording": {
+      "name": "开始摄像头录像",
+      "description": "让摄像头开始录像。后端/RPC 实现预留。",
+      "fields": {
+        "device_id": {
+          "name": "摄像头设备",
+          "description": "目标摄像头设备。"
+        },
+        "duration": {
+          "name": "持续时间",
+          "description": "录像持续时间，单位秒。"
+        },
+        "reason": {
+          "name": "原因",
+          "description": "可选原因，用于 App/云端展示或记录。"
+        }
+      }
+    },
+    "stop_camera_recording": {
+      "name": "停止摄像头录像",
+      "description": "让摄像头停止录像。后端/RPC 实现预留。",
+      "fields": {
+        "device_id": {
+          "name": "摄像头设备",
+          "description": "目标摄像头设备。"
+        }
+      }
+    },
+    "capture_camera_snapshot": {
+      "name": "摄像头抓拍",
+      "description": "请求摄像头生成一张新的 Airych 云端快照。",
+      "fields": {
+        "device_id": {
+          "name": "摄像头设备",
+          "description": "目标摄像头设备。"
+        },
+        "resolution": {
+          "name": "分辨率",
+          "description": "快照分辨率。"
+        },
+        "with_osd": {
+          "name": "包含 OSD",
+          "description": "如果后端支持，则在快照中包含屏幕显示。"
+        }
+      }
+    },
+    "send_mobile_notification": {
+      "name": "发送 Airych 手机通知",
+      "description": "向 Airych 手机 App 发送通知。后端实现预留。",
+      "fields": {
+        "title": {
+          "name": "标题",
+          "description": "通知标题。"
+        },
+        "message": {
+          "name": "内容",
+          "description": "通知内容。"
+        },
+        "level": {
+          "name": "级别",
+          "description": "通知级别。"
+        },
+        "camera": {
+          "name": "摄像头",
+          "description": "可选的摄像头上下文。"
+        },
+        "include_snapshot": {
+          "name": "包含快照",
+          "description": "如果后端支持，则通知中包含摄像头快照。"
+        }
+      }
+    }
+  },
+  "device_automation": {
+    "action_type": {
+      "snapshot": "抓拍"
+    }
+  }
+}
