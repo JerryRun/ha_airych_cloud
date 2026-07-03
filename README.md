@@ -32,9 +32,9 @@ custom_components/airych_cloud
   - `airych_cloud.capture_camera_snapshot`
   - `airych_cloud.send_mobile_notification`
 
-Snapshot capture is implemented. The other action services are registered as
-stable Home Assistant automation surfaces and will be wired to cloud/RPC
-contracts as they become available.
+Snapshot capture is implemented. The other action services are exposed as
+stable Home Assistant automation surfaces and will become active as the
+corresponding Airych cloud actions are released.
 
 ## Requirements
 
@@ -121,9 +121,6 @@ https://www.airych.xyz/legal/privacy_en.md
   verify that the VioStation is online.
 - If snapshots stay stale, check that the hub can upload snapshot files and the
   `.ts` marker to the Airych cloud file service.
-- Existing test entries created against local development URLs should be removed
-  and re-added so the built-in cloud URLs are used.
-
 ## Development
 
 Basic local checks:

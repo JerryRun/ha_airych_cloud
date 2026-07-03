@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.1
+
+- Polish public documentation for HACS default repository review.
+- Remove development-only package documentation from the release bundle.
+- Keep the integration version aligned with the published release.
+
 ## v0.1.0
 
 Initial public preview release.

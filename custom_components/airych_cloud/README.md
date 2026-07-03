@@ -1,13 +1,13 @@
 # Airych Cloud (Home Assistant)
 
-Cloud-connected Home Assistant integration for Airych devices. It runs in a
-customer-installed Home Assistant and talks to the Airych cloud
-(ThingsBoard) — see [`DESIGN.md`](./DESIGN.md) for the full specification.
+Cloud-connected Home Assistant integration for Airych VioStation and VioCam
+devices. It runs in a customer-installed Home Assistant instance and connects
+to the Airych cloud.
 
 ## How it works
 - **Pairing**: scan a QR code (device-authorization grant) in the Airych app; the
   App backend returns a ThingsBoard access token plus a long-lived refresh token.
-- **Data**: the integration uses the TB token directly — REST for the device list,
+- **Data**: the integration uses the ThingsBoard token directly — REST for the device list,
   WebSocket for `CLIENT_SCOPE` attribute pushes (online / person / door / window /
   fall / smoke-fire / recording, battery, signal …).
 - **Model**: each hub is a HA device; each camera is a HA device under its hub.
@@ -21,13 +21,12 @@ customer-installed Home Assistant and talks to the Airych cloud
   manual snapshot downloads always request a fresh image.
 - **Actions**: HA services expose explicit user intents such as playing
   VioStation/VioCam alarms, camera recording, cloud snapshots, and mobile
-  notifications. Snapshot capture is implemented; the other action handlers are
-  registered as placeholders until cloud/RPC contracts are finalized.
+  notifications. Snapshot capture is implemented, and the other services are
+  reserved for the corresponding Airych cloud actions.
 
 ## Status
 Pairing, device selection, entity creation, options-based reselection, snapshots,
-and the NBClient-compatible WebRTC signaling path are implemented. Video playback
-may still need hub-side GStreamer pipeline tuning against real devices.
+and WebRTC live view are implemented.
 
 ## Requirements
 - Home Assistant 2024.11+ (native camera WebRTC API).
