@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+- Add the missing `v=1` parameter to the Airych app QR pairing URI.
+
 ## v0.1.1
 
 - Polish public documentation for HACS default repository review.

@@ -81,7 +81,7 @@ def _qr_data_uri(content: str) -> str:
 
 def _pairing_qr_content(user_code: str) -> str:
     """Return the Airych app QR payload for HA pairing approval."""
-    return f"airych://oauth/device?scene=ha&user_code={quote(user_code)}"
+    return f"airych://oauth/device?v=1&scene=ha&user_code={quote(user_code)}"
 
 
 def _as_list(value: Any) -> list[str]:
