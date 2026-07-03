@@ -1,7 +1,6 @@
 # Airych Cloud (Home Assistant)
 
-Cloud-connected Home Assistant integration for Airych devices. Unlike the local
-`airych_home` integration (dbus, runs on-device), this one runs in a
+Cloud-connected Home Assistant integration for Airych devices. It runs in a
 customer-installed Home Assistant and talks to the Airych cloud
 (ThingsBoard) — see [`DESIGN.md`](./DESIGN.md) for the full specification.
 

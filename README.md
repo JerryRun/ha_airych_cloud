@@ -9,14 +9,11 @@ VioCam devices. It connects a user-managed Home Assistant instance to the
 Airych cloud, ThingsBoard device data, cloud snapshots, and native Home
 Assistant WebRTC camera playback.
 
-This repository contains the cloud integration only:
+This repository contains the Airych Cloud integration:
 
 ```text
 custom_components/airych_cloud
 ```
-
-The older local/on-device integration (`airych_home`) is intentionally not
-included in this HACS repository.
 
 ## Features
 
